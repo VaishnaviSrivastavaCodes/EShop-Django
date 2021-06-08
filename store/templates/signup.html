@@ -1,0 +1,52 @@
+{% extends 'base.html'%}
+
+{%block content%}
+<div class="container">
+    <div class ="p-4 m-4" > 
+        <div class="col-lg-5 mx-auto">
+            <h3 class="alert alert-light text-center mb-1">Sign Up</h3>
+        <form action="/signup" method="POST">
+                {%csrf_token%}
+              <!--error-message-->
+              {%if error%}
+                <div class="alert alert-danger" role="alert">
+                  {{error}}
+                </div>
+                {%endif%}
+            <!--name-->
+            <div class="form-group">
+                <label for="">Name</label>
+                <input value = "{{values.name}}" required type="text" name="name" id="name" class="form-control" placeholder="Your name" >
+              </div>
+
+            <!--email-->
+            <div class="form-group">
+              <label for="">Email</label>
+              <input value = "{{values.email}}" required type="email" name="email" id="email" class="form-control" placeholder="name@example.com" >
+            </div>
+
+            <!--mobile-number-->
+            <div class="form-group">
+                <label for="">Phone Number</label>
+                <input value="{{values.phone}}" type="number" name="phone" id="phone" class="form-control" placeholder="Your number" >
+              </div>
+
+              
+
+            <!--password-->
+            <div class="form-group">
+                <label for="">Password</label>
+                <input required type="password" name="password" id="password" class="form-control" placeholder="Create your password" >
+              </div>
+
+
+             
+
+              <div class="form-group mx-auto text-center mt-3" >
+                  <input  class = "btn btn-outline-primary" type="submit" value = "Sign Me Up">
+              </div>
+        </form>
+        </div>
+    </div>
+</div>
+{%endblock%}
