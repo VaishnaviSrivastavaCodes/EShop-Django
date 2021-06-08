@@ -18,4 +18,7 @@ EShop is a web app for online shopping  made using Python and Django. It has the
 - Logout
 
 An external user can only add items to her/his cart if she/he is logged in.
+
+Working demo:
+http://vaishnavisrivastavacodes.pythonanywhere.com/
  
