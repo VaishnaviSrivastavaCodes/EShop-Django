@@ -4,8 +4,6 @@ from store.models.category import Category
 from django.views import View
 
 
-
-
 class Index(View):
     def post(self , request):
         customer = request.session.get('customer')
@@ -25,17 +23,20 @@ class Index(View):
             remove = request.POST.get('remove')
             cart = request.session.get('cart')
             if cart:
-                quantity = cart.get(product_id)
-                print('quantity is :',quantity)
+                if product_id:
+                    quantity = cart.get(product_id)
+                else:
+                    quantity= cart.get(remove)
                 if quantity:
                     if remove:
-                        if quantity<=1:
-                            cart.pop(product_id)
-                        else:
-                            cart[product_id]  = quantity-1
+                            if quantity>1:
+                                quantity = quantity -1
+                                cart[remove]  = quantity
+                            else:
+                                cart.pop(remove)
                     else:
-                        cart[product_id]  = quantity+1
-
+                            quantity=quantity+1
+                            cart[product_id] = quantity
                 else:
                     cart[product_id] = 1
             else:
@@ -43,6 +44,11 @@ class Index(View):
                 cart[product_id] = 1
             request.session['cart'] = cart
             return redirect('homepage')
+
+
+
+
+        
 
 
 

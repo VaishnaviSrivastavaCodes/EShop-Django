@@ -7,7 +7,8 @@ def is_in_cart(product, cart):
     keys=cart.keys()
     for id in keys:
         if id == str(product.id):
-            return True
+            if cart[id]>=1:
+                return True
     return False
 
 @register.filter(name='cart_quantity')

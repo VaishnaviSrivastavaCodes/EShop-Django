@@ -31,6 +31,7 @@
             <tbody>
                 
                 {% for product in products %}
+                {% if product|is_in_cart:request.session.cart%}
                 <tr>
                     <td>{{forloop.counter}}</td>
                     <td><img style="height: 80px;" class="rounded-circle" src="{{product.image.url}}" alt=""></td>
@@ -39,7 +40,7 @@
                     <td>{{product|cart_quantity:request.session.cart}}</td>
                     <td>{{product|price_total:request.session.cart|currency}}</td>
                 </tr>
-
+                {%endif%}
                 {% endfor %}
                
             </tbody>
