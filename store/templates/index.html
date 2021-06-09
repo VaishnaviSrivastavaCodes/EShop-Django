@@ -41,7 +41,7 @@
             <div class="row  no-gutters">
               <form action="/#{{product.id}}" method="post" class="col-3">
                 {%csrf_token%}
-                <input hidden type="text" name='remove' value='True'>
+                <input hidden type="text" name='remove' value='{{product.id}}'>
                 <input type="submit" value="-" class=" btn btn-block btn-secondary">
               </form>
 
